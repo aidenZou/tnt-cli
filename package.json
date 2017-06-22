@@ -1,0 +1,26 @@
+{
+  "name": "tnt-cli",
+  "version": "0.1.0",
+  "description": "tnt client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rxfe/tnt-cli.git"
+  },
+  "keywords": [
+    "todo"
+  ],
+  "author": "doodlewind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rxfe/tnt-cli/issues"
+  },
+  "homepage": "https://github.com/rxfe/tnt-cli#readme",
+  "dependencies": {
+    "gaze": "^1.1.2",
+    "marked": "^0.3.6"
+  }
+}
