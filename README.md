@@ -1,2 +1,2 @@
-# hackthon tnt-cli
-# tnt-web
+# tnt-cli
+Hackathon client side demo.
