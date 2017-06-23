@@ -1,6 +1,6 @@
 const axios = require('axios')
 const loader = require('./file-loader')
-const url = 'http://127.0.0.1:3000/updateSelectedStory'
+const url = 'http://127.0.0.1:3000/syncStory'
 
 function send (data) {
   return new Promise((resolve, reject) => {
