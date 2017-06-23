@@ -15,9 +15,10 @@ function log (data) {
 }
 
 module.exports = {
+  log,
   sync (filePath) {
     const data = loader.load(filePath)
-    log(data)
+    // log(data)
     send(data)
       .then(info => console.log('update success'))
       .catch(e => console.log('update error'))
