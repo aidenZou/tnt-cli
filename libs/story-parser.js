@@ -80,10 +80,9 @@ function parseTask (task) {
 
 // 由 Story JSON 结构解析 Task 信息
 function parse (storys) {
-  storys.forEach(story => {
+  return storys.map(story => {
     const tasks = story.tasks
-    const result = tasks.map(parseTask)
-    console.log(result)
+    return tasks.map(parseTask)
   })
 }
 

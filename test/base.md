@@ -1,3 +1,14 @@
+project: xxx
+version: xxx
+author: wangyifeng03
+storys:
+  - name: 需求 1
+    date: 06-01~06-30
+  - name: 需求 2
+    date: 06-02
+
+---
+
 ### 需求 1
 * 实现 A 功能
 * [] 修复 B Bug: 1h-3h-1d
