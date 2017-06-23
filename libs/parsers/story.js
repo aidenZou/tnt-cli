@@ -103,7 +103,7 @@ function sanitizeStoryName (name) {
 function parse (storys) {
   return storys.map(story => {
     return {
-      name: sanitizeStoryName(story.name),
+      text: sanitizeStoryName(story.name),
       progress: getStoryProgress(story.name),
       tasks: story.tasks.map(parseTask)
     }
