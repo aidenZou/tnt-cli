@@ -78,11 +78,35 @@ function parseTask (task) {
   return { status, timing, isFloat, after, blame }
 }
 
+// 根据 Story 名获取其进度信息，若不存在进度时为 null
+function getStoryProgress (name) {
+  const pattern = new RegExp(/\[x*\d*( )*%?\]/)
+  if (pattern.test(name)) {
+    // 清理 [] 符号
+    const rawProgress = name.match(pattern)[0].replace(/(\[|\])/g, '')
+    // [x] 时返回 100%
+    if (rawProgress.indexOf('x') > -1) return 1
+    // [ ] 时表示未开展
+    else if (rawProgress === ' ') return 0
+    // [70%] 时返回 0~1 的进度小数值
+    else return parseInt(rawProgress, 10) / 100 || 0
+  } else return null
+}
+
+// 去除 Story 名前方进度信息
+function sanitizeStoryName (name) {
+  const pattern = new RegExp(/\[x*\d*( )*%?\]\s*/)
+  return name.replace(pattern, '')
+}
+
 // 由 Story JSON 结构解析 Task 信息
 function parse (storys) {
   return storys.map(story => {
-    const tasks = story.tasks
-    return tasks.map(parseTask)
+    return {
+      name: sanitizeStoryName(story.name),
+      progress: getStoryProgress(story.name),
+      tasks: story.tasks.map(parseTask)
+    }
   })
 }
 

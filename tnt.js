@@ -2,9 +2,9 @@
 const fs = require('fs')
 const path = require('path')
 const argv = require('minimist')(process.argv.slice(2))
-const mdParser = require('./libs/md-parser')
-const metaParser = require('./libs/meta-parser')
-const storyParser = require('./libs/story-parser')
+const mdParser = require('./libs/parsers/md')
+const metaParser = require('./libs/parsers/meta')
+const storyParser = require('./libs/parsers/story')
 
 const name = argv._[0] || 'base.md'
 const basePath = path.join(__dirname, './test', name)
@@ -16,5 +16,6 @@ if (segments.length !== 2) {
 } else {
   metaParser.parse(segments[0])
   const json = mdParser.parse(segments[1])
-  storyParser.parse(json)
+  const data = storyParser.parse(json)
+  console.log(JSON.stringify(data, null, 2))
 }
