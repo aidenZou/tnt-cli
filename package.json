@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/rxfe/tnt-cli#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
     "gaze": "^1.1.2",
     "marked": "^0.3.6",
     "minimist": "^1.2.0"

@@ -8,4 +8,5 @@ const name = argv._[0] || 'base.md'
 const basePath = path.join(__dirname, './test', name)
 const text = fs.readFileSync(basePath, 'utf8')
 
-analyzer.analyse(text)
+const data = analyzer.analyse(text)
+console.log(JSON.stringify(data, null, 2))
