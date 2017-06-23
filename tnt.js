@@ -2,11 +2,12 @@
 const fs = require('fs')
 const path = require('path')
 const argv = require('minimist')(process.argv.slice(2))
-const analyzer = require('./libs/analyzer')
+const mdParser = require('./libs/md-parser')
+const storyParser = require('./libs/story-parser')
 
 const name = argv._[0] || 'base.md'
 const basePath = path.join(__dirname, './test', name)
 const text = fs.readFileSync(basePath, 'utf8')
 
-const data = analyzer.analyse(text)
-console.log(JSON.stringify(data, null, 2))
+const json = mdParser.parse(text)
+storyParser.parse(json)

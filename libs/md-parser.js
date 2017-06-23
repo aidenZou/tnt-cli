@@ -32,18 +32,18 @@ function getTasks (storyHeader) {
   }
 }
 
-function analyse (text) {
+function parse (text) {
   const html = (marked(text))
   const $ = cheerio.load(html)
-  const data = $('h2, h3').get().map(
+  const storys = $('h2, h3').get().map(
     (node) => ({
-      story: getStoryName(node),
+      name: getStoryName(node),
       tasks: getTasks(node)
     })
   )
-  return data
+  return storys
 }
 
 module.exports = {
-  analyse
+  parse
 }
