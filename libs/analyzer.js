@@ -26,7 +26,6 @@ function getTasks (storyHeader) {
           children: getSubTask(li)
         }
       })
-    console.log(123)
     return tasks
   } catch (e) {
     throw e
