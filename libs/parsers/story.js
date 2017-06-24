@@ -67,6 +67,12 @@ function getMemo (list) {
   return { blame, after }
 }
 
+function sanitizeTask (text) {
+  return text
+    .replace(/\[x*a*\d*( )*%?\]\s*/, '')
+    .replace(/:(.)*$/, '')
+}
+
 // 解析单条 Task 字段内容
 function parseTask (task) {
   const text = task.text
@@ -75,7 +81,14 @@ function parseTask (task) {
   const timing = getTiming(tailText)
   const isFloat = getFloat(tailText)
   const { after, blame } = getMemo(task.children)
-  return { status, timing, isFloat, after, blame }
+  return {
+    status,
+    timing,
+    isFloat,
+    after,
+    blame,
+    text: sanitizeTask(text)
+  }
 }
 
 // 根据 Story 名获取其进度信息，若不存在进度时为 null
